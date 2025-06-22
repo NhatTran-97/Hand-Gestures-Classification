@@ -35,6 +35,6 @@ Follow these steps to set up the project on your local machine:
 ### Clone the repository
 
 ```bash
-git clonehttps://github.com/NhatTran-97/Hand-Gestures-Classification.git
+git clone https://github.com/NhatTran-97/Hand-Gestures-Classification.git
 
 ```
