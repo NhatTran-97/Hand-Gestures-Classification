@@ -35,5 +35,6 @@ Follow these steps to set up the project on your local machine:
 ### Clone the repository
 
 ```bash
-git clone --filter=blob:none --no-checkout https://github.com/NhatTran-97/Deep_Learning_Projects.git
-cd hand-gesture-recognition
+git clonehttps://github.com/NhatTran-97/Hand-Gestures-Classification.git
+
+```
