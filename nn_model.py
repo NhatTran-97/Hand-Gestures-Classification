@@ -1,10 +1,8 @@
 
 import yaml
 import torch
-
 from  torch import nn
 import utils
-
 device = torch.device("cuda" if torch.cuda.is_available() else "cpu")
 
 
@@ -12,11 +10,13 @@ class NeuralNetwork(nn.Module):
     def __init__(self):
         super(NeuralNetwork,self).__init__()
         """ This class aims to build a Neural Network Classification. This model contains 4 hidden layer
-        *  Input: 63 Features
+        *  Input Layer: 63 Features: Receives features extracted from gesture data
+        - Hidden Layer: One or more layers that process the inputs through weighted connections and nonlinear activation functions
         *  Hidden Layer 1: (63, 128), (Relu, BatchNorm1d) 
-        *  Hidden Layer 1: (128, 128) (Relu, Dropout:0.4) 
-        *  Hidden Layer 2: (128, 128) (Relu, Dropout:0.4)  
-        *  Hidden Layer 3: (128, 128) (Relu, Dropout:0.6)  
+        *  Hidden Layer 2: (128, 128) (Relu, Dropout:0.4) 
+        *  Hidden Layer 3: (128, 128) (Relu, Dropout:0.4)  
+        *  Hidden Layer 4: (128, 128) (Relu, Dropout:0.6)  
+        - Output Layer: Produces the final classification output, indicating the recognized gesture
         *  Output: 128: 128 of Number of Labels 
         """
         self.flatten = nn.Flatten()
@@ -38,8 +38,8 @@ class NeuralNetwork(nn.Module):
             nn.ReLU(),
             nn.Dropout(p=0.6),
 
-            nn.Linear(128, len(list_label))
-        )
+            nn.Linear(128, len(list_label)))
+        
     def forward(self, x):
         x = self.flatten(x)
         logits = self.linear_relu_stack(x) # Output of last layer
